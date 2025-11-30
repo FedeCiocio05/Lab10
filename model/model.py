@@ -1,4 +1,4 @@
-from database.dao import dao
+from database.dao import DAO
 import networkx as nx
 
 class Model:
@@ -20,19 +20,19 @@ class Model:
         self._edges = set()
 
         # 2. Recupero tutti gli Hub dal DB
-        all_hubs = dao.get_hub()
+        all_hubs = DAO.get_hub()
 
         # 3. Aggiungo i nodi al grafo
         for hub in all_hubs:
             # Salvo nella mappa per recuperare l'oggetto dato l'ID
-            self._id_map[hub.id_hub] = hub
+            self._id_map[hub.id] = hub
             self._nodes.add(hub)
 
             # Aggiungo il nodo al grafo (passo l'intero oggetto)
             self.G.add_node(hub)
 
         # 4. Recupero tutte le tratte (archi potenziali)
-        all_tratte = dao.get_tratta()  # Metodo corretto nel turno precedente
+        all_tratte = DAO.get_tratta()  # Metodo corretto nel turno precedente
 
         # 5. Aggiungo gli archi filtrando
         for tratta in all_tratte:

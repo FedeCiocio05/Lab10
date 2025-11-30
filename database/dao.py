@@ -54,7 +54,7 @@ class DAO:
                     id=row["id"],
                     codice=row["codice"],
                     nome=row["nome"],
-                    citta=row["città"],
+                    citta=row["citta"],
                     stato=row["stato"],
                     latitudine=row["latitudine"],
                     longitudine=row["longitudine"]
